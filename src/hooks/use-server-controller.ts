@@ -445,7 +445,7 @@ export function useServerController() {
             await startServer({ port: SERVER_PORT })
             appendOfflineLog("info", "server-start", ["native start returned"], true)
             await refreshStatus()
-            toast.success("Seanime Server started")
+            toast.success("WeebHub Mobile Server started")
         }
         catch (error) {
             startTraceRef.current = null
@@ -457,7 +457,7 @@ export function useServerController() {
     const stop = React.useCallback(() => run(async () => {
         startTraceRef.current = null
         await stopServer()
-        toast.success("Seanime Server stopped")
+        toast.success("WeebHub Mobile Server stopped")
     }), [run])
 
     const restart = React.useCallback(() => run(async () => {
@@ -469,7 +469,7 @@ export function useServerController() {
             await startServer({ port: SERVER_PORT })
             appendOfflineLog("info", "server-restart", ["native restart returned"], true)
             await refreshStatus()
-            toast.success("Seanime Server restarted")
+            toast.success("WeebHub Mobile Server restarted")
         }
         catch (error) {
             startTraceRef.current = null

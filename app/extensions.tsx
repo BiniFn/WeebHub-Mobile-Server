@@ -429,7 +429,7 @@ export default function ExtensionsScreen() {
                                 <View className="gap-1 items-center">
                                     <Text className="text-lg font-semibold text-foreground text-center">Server Offline</Text>
                                     <Text className="text-xs text-muted-foreground text-center leading-5 px-4">
-                                        Start your local Seanime server to manage and download extensions.
+                                        Start your local WeebHub server to manage and download extensions.
                                     </Text>
                                 </View>
                             </View>

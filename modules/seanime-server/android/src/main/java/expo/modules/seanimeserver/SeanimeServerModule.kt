@@ -22,7 +22,7 @@ class SeanimeServerModule : Module() {
                 }
                 promise.resolve(SeanimeServerRuntime.start(context, port))
             } catch (error: Exception) {
-                promise.reject("SEANIME_START_FAILED", error.message ?: "Failed to start Seanime Server", error)
+                promise.reject("WEEBHUB_START_FAILED", error.message ?: "Failed to start WeebHub Mobile Server", error)
             }
         }
 

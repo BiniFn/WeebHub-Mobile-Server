@@ -186,7 +186,7 @@ object ExpoOfflineLoggerRuntime {
                 }
             }
         }.apply {
-            name = "SeanimeServerAnrWatchdog"
+            name = "WeebHubMobileServerAnrWatchdog"
             isDaemon = true
             start()
         }
@@ -251,7 +251,7 @@ class ExpoOfflineLoggerModule : Module() {
 
         Function("copyToClipboard") { text: String ->
             val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-            clipboard.setPrimaryClip(ClipData.newPlainText("Seanime Server logs", text))
+            clipboard.setPrimaryClip(ClipData.newPlainText("WeebHub Mobile Server logs", text))
             true
         }
     }

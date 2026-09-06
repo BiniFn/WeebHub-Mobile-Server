@@ -6,7 +6,7 @@ import * as Updates from "expo-updates"
 import * as React from "react"
 import { Alert } from "react-native"
 
-type SeanimeUpdateExtra = {
+type WeebHubUpdateExtra = {
     otaVersion?: string
     updateGroup?: string
     channel?: string
@@ -55,7 +55,7 @@ export function OtaUpdatePrompt() {
 
 export function getOtaVersionInfo(): OtaVersionInfo {
     const appVersion = Constants.expoConfig?.version ?? "unknown"
-    const extra = getSeanimeUpdateExtra(Updates.manifest)
+    const extra = getWeebHubUpdateExtra(Updates.manifest)
     const channel = extra.channel ?? Updates.channel ?? "stable"
     const fallbackVersion = Updates.isEmbeddedLaunch
         ? "embedded"
@@ -81,7 +81,7 @@ export async function checkForOtaUpdateManually(): Promise<void> {
     try {
         const result = await Updates.checkForUpdateAsync()
         if (!result.isAvailable || result.isRollBackToEmbedded) {
-            toast.info("Seanime Server is up to date")
+            toast.info("WeebHub Mobile Server is up to date")
             return
         }
 
@@ -125,7 +125,7 @@ async function checkForPromptableUpdate({
 }
 
 function promptInstallUpdate(manifest: unknown) {
-    const extra = getSeanimeUpdateExtra(manifest)
+    const extra = getWeebHubUpdateExtra(manifest)
     const versionLabel = extra.otaVersion ? `OTA ${extra.otaVersion}` : "A new update"
     const updateId = isRecord(manifest) && typeof manifest.id === "string" ? manifest.id : undefined
 
@@ -156,13 +156,13 @@ async function fetchAndPromptReload(updateId: string | undefined, otaVersion: st
     try {
         const result = await Updates.fetchUpdateAsync()
         if (!result.isNew && !result.isRollBackToEmbedded) {
-            toast.info("Seanime Server is already up to date")
+            toast.info("WeebHub Mobile Server is already up to date")
             return
         }
 
         const versionLabel = otaVersion ? `OTA ${otaVersion}` : "The update"
         Alert.alert(
-            "Restart Seanime Server?",
+            "Restart WeebHub Mobile Server?",
             `${versionLabel} has been downloaded. The app needs to restart to apply it. The server will be stopped during restart.`,
             [
                 { text: "Later", style: "cancel" },
@@ -192,7 +192,7 @@ async function fetchAndPromptReload(updateId: string | undefined, otaVersion: st
     }
 }
 
-function getSeanimeUpdateExtra(manifest: unknown): SeanimeUpdateExtra {
+function getWeebHubUpdateExtra(manifest: unknown): WeebHubUpdateExtra {
     if (!isRecord(manifest)) {
         return {}
     }
@@ -202,18 +202,18 @@ function getSeanimeUpdateExtra(manifest: unknown): SeanimeUpdateExtra {
         return {}
     }
 
-    const seanime = extra.seanime
-    if (!isRecord(seanime)) {
+    const weebhub = isRecord(extra.weebhub) ? extra.weebhub : extra.seanime
+    if (!isRecord(weebhub)) {
         return {}
     }
 
     return {
-        otaVersion: readString(seanime.otaVersion),
-        updateGroup: readString(seanime.updateGroup),
-        channel: readString(seanime.channel),
-        platform: readString(seanime.platform),
-        appVersion: readString(seanime.appVersion),
-        publishedAt: readString(seanime.publishedAt),
+        otaVersion: readString(weebhub.otaVersion),
+        updateGroup: readString(weebhub.updateGroup),
+        channel: readString(weebhub.channel),
+        platform: readString(weebhub.platform),
+        appVersion: readString(weebhub.appVersion),
+        publishedAt: readString(weebhub.publishedAt),
     }
 }
 

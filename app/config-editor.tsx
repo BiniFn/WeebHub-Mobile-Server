@@ -13,7 +13,7 @@ export default function ConfigEditorScreen() {
     const handleReset = React.useCallback(() => {
         Alert.alert(
             "Reset config.toml",
-            "Restore the mobile default Seanime config.",
+            "Restore the mobile default WeebHub config.",
             [
                 { text: "Cancel", style: "cancel" },
                 { text: "Reset", style: "destructive", onPress: controller.restoreConfig },

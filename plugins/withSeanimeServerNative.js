@@ -24,7 +24,7 @@ function checkPerm(manifest, name, attrs = {}) {
 function assertFile(projectRoot, relativePath) {
     const filePath = path.join(projectRoot, relativePath)
     if (!fs.existsSync(filePath)) {
-        throw new Error(`Missing Seanime mobile artifact: ${relativePath}`)
+        throw new Error(`Missing WeebHub mobile artifact: ${relativePath}`)
     }
     return filePath
 }
@@ -51,7 +51,7 @@ const withSeanimeServerNative = config => {
         plist.UIBackgroundModes = Array.from(new Set([...currentModes, "audio"]))
         plist.NSLocalNetworkUsageDescription =
             plist.NSLocalNetworkUsageDescription ??
-            "Seanime Server accepts local connections from Seanime clients on this device."
+            "WeebHub Mobile Server accepts local connections from WeebHub clients on this device."
         return plistConfig
     })
 

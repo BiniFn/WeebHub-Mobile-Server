@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name           = 'ExpoOfflineLogger'
   s.version        = '0.1.0'
-  s.summary        = 'Expo module for Seanime Server offline logs and crash capture'
+  s.summary        = 'Expo module for WeebHub Mobile Server offline logs and crash capture'
   s.description    = 'Expo module for offline log persistence and best-effort native crash capture on Android and iOS'
   s.author         = 'seanime'
   s.homepage       = 'https://github.com/5rahim/seanime-server-mobile'

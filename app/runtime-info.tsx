@@ -47,7 +47,7 @@ export default function RuntimeInfoScreen() {
                     </Text>
                     <Text className="text-xs text-muted-foreground">
                         {controller.reachability.version
-                            ? `Seanime v${controller.reachability.version}`
+                            ? `WeebHub v${controller.reachability.version}`
                             : controller.reachability.error ?? "Waiting for the server listener."}
                     </Text>
                 </View>

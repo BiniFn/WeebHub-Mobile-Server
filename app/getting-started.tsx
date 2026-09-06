@@ -90,7 +90,7 @@ export default function GettingStartedScreen() {
                                 cursorColor={COLORS.brand}
                             />
                             <Text className="text-[11px] text-muted-foreground/60 leading-4">
-                                Authorize Seanime in the browser window, then copy and paste the access token here. Leave blank if you don't use
+                                Authorize WeebHub in the browser window, then copy and paste the access token here. Leave blank if you don't use
                                 AniList.
                             </Text>
                         </View>
@@ -119,7 +119,7 @@ export default function GettingStartedScreen() {
                                 <Text className="text-[11px] text-muted-foreground leading-4">
                                     {Platform.OS === "android"
                                         ? "Android implements Scoped Storage. A default path to the Download/Anime directory has been pre-filled. You must create this folder manually on your device's storage (using a File Explorer, navigate to 'Download' and create a new folder named 'Anime'). If storing files on an external SD card, use the format '/storage/XXXX-XXXX/Anime' (replace XXXX-XXXX with your SD card ID). Make sure to grant external storage permission on the dashboard."
-                                        : "iOS is strictly sandboxed. Leaving this empty defaults to the root of the 'Seanime Server' folder in the native Files app (under 'On My iPhone'). You can transfer media directly into this folder using Finder/iTunes or the Files app."}
+                                        : "iOS is strictly sandboxed. Leaving this empty defaults to the root of the 'WeebHub Mobile Server' folder in the native Files app (under 'On My iPhone'). You can transfer media directly into this folder using Finder/iTunes or the Files app."}
                                 </Text>
                             </View>
                         )}

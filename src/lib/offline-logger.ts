@@ -223,7 +223,7 @@ export async function getOfflineLogText(): Promise<string> {
 
     if (entries.length > 0) {
         sections.push([
-            "# Seanime Server logs",
+            "# WeebHub Mobile Server logs",
             ...entries.map(entry => JSON.stringify(sanitizeEntryForExport(entry))),
         ].join("\n"))
     }
@@ -251,7 +251,7 @@ export async function getOfflineCrashText(): Promise<string> {
 
     if (entries.length > 0) {
         sections.push([
-            "# Seanime Server crash report",
+            "# WeebHub Mobile Server crash report",
             ...entries.map(entry => JSON.stringify(sanitizeEntryForExport(entry))),
         ].join("\n"))
     }

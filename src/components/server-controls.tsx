@@ -133,7 +133,7 @@ export function ServerControls({
                     <RowDivider />
                     <ControlRow
                         icon={Settings}
-                        label="Seanime Settings / Web UI"
+                        label="WeebHub Settings / Web UI"
                         detail="Available in the web interface"
                         action="Open"
                         disabled={!canConnect}
@@ -161,7 +161,7 @@ export function ServerControls({
                     >
                         <Smartphone size={20} color="rgba(255, 255, 255, 0.45)" />
                         <Text className="ml-3.5 flex-1 text-base font-medium text-foreground">
-                            Open Seanime Tenji
+                            Open WeebHub Tenji
                         </Text>
                         <ChevronRight size={18} color="rgba(255, 255, 255, 0.25)" />
                     </Pressable>

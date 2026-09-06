@@ -198,7 +198,7 @@ builtintorrentclient = true
         val appContext = context.applicationContext
         val state = prefs(appContext).getString(keyState, "stopped") ?: "stopped"
         if (state == "running" || state == "starting" || state == "stopping") {
-            error("Stop Seanime Server before changing its data directory.")
+            error("Stop WeebHub Mobile Server before changing its data directory.")
         }
 
         val rawPath = path.trim()
@@ -243,7 +243,7 @@ builtintorrentclient = true
 
     fun copyToClipboard(context: Context, text: String): Boolean {
         val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        clipboard.setPrimaryClip(ClipData.newPlainText("Seanime Server URL", text))
+        clipboard.setPrimaryClip(ClipData.newPlainText("WeebHub Mobile Server URL", text))
         return true
     }
 
@@ -281,7 +281,7 @@ builtintorrentclient = true
         }
 
         return builder
-            .setContentTitle("Seanime Server is running")
+            .setContentTitle("WeebHub Mobile Server is running")
             .setContentText("Serving ${status(appContext)["url"]}")
             .setSmallIcon(appContext.applicationInfo.icon)
             .setOngoing(true)
@@ -352,7 +352,7 @@ builtintorrentclient = true
 
     private fun internalDir(context: Context) = context.filesDir.canonicalFile
 
-    private fun suggestedDir() = File(Environment.getExternalStorageDirectory(), "Seanime")
+    private fun suggestedDir() = File(Environment.getExternalStorageDirectory(), "WeebHub")
 
     private fun normalizedFile(path: String): File {
         return runCatching { File(path).canonicalFile }.getOrElse { File(path).absoluteFile }
@@ -549,10 +549,10 @@ builtintorrentclient = true
 
         val channel = NotificationChannel(
             notificationChannelId,
-            "Seanime Server",
+            "WeebHub Mobile Server",
             NotificationManager.IMPORTANCE_LOW
         ).apply {
-            description = "Keeps the Seanime Go server alive in the background."
+            description = "Keeps the WeebHub Go server alive in the background."
             setShowBadge(false)
         }
         manager.createNotificationChannel(channel)

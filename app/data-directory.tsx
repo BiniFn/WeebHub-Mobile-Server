@@ -49,7 +49,7 @@ export default function DataDirectoryScreen() {
 
         Alert.alert(
             "Switch to this folder?",
-            `Seanime will load its config and database from:\n\n${target}\n\nNothing will be copied or deleted. Only continue if this folder already contains Seanime data, including config.toml.`,
+            `WeebHub will load its config and database from:\n\n${target}\n\nNothing will be copied or deleted. Only continue if this folder already contains WeebHub data, including config.toml.`,
             [
                 { text: "Cancel", style: "cancel" },
                 {
@@ -67,7 +67,7 @@ export default function DataDirectoryScreen() {
 
         Alert.alert(
             "Use internal data?",
-            "Seanime will switch back to its original private folder. No files from the current folder will be copied back.",
+            "WeebHub will switch back to its original private folder. No files from the current folder will be copied back.",
             [
                 { text: "Cancel", style: "cancel" },
                 {
@@ -137,7 +137,7 @@ export default function DataDirectoryScreen() {
                         <View className="shrink gap-1">
                             <Text className="text-sm font-semibold text-foreground">Storage permission required</Text>
                             <Text className="text-xs leading-5 text-muted-foreground">
-                                Android must allow Seanime Server to manage files before it can use a public folder.
+                                Android must allow WeebHub Mobile Server to manage files before it can use a public folder.
                             </Text>
                         </View>
                     </View>
@@ -167,7 +167,7 @@ export default function DataDirectoryScreen() {
                     className="min-h-14 rounded-xl border border-border bg-gray-950/60 px-4 py-3 text-sm text-foreground focus:border-brand-500"
                     value={path}
                     onChangeText={setPath}
-                    placeholder="/storage/emulated/0/Seanime"
+                    placeholder="/storage/emulated/0/WeebHub"
                     placeholderTextColorClassName="accent-muted-foreground"
                     cursorColorClassName="accent-brand-400"
                     selectionColorClassName="accent-brand-500"
@@ -228,7 +228,7 @@ export default function DataDirectoryScreen() {
                 <View className="shrink gap-1">
                     <Text className="text-sm font-semibold text-foreground">Public folders are less private</Text>
                     <Text className="text-xs leading-5 text-muted-foreground">
-                        Seanime data can include account tokens, settings, logs, and extensions. Other apps with broad storage access may be able to
+                        WeebHub data can include account tokens, settings, logs, and extensions. Other apps with broad storage access may be able to
                         read them.
                     </Text>
                 </View>

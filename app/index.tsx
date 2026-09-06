@@ -112,14 +112,14 @@ export default function HomeScreen() {
         if (status?.url) {
             const url = `${status.url.replace(/\/+$/, "")}/settings`
             Linking.openURL(url).catch(() => {
-                toast.error("Failed to open Seanime settings")
+                toast.error("Failed to open WeebHub settings")
             })
         }
     }, [status?.url])
 
     const handleOpenTenji = React.useCallback(async () => {
-        const url = "seanime://"
-        const fallbackUrl = "https://seanime.app/tenji"
+        const url = "weebhub://"
+        const fallbackUrl = "https://github.com/BiniFn/WeebHub-Tenji/releases"
         try {
             const canOpen = await Linking.canOpenURL(url).catch(() => false)
             if (canOpen) {
@@ -172,7 +172,7 @@ export default function HomeScreen() {
                     <View
                         accessible
                         accessibilityRole="header"
-                        accessibilityLabel="Seanime Server"
+                        accessibilityLabel="WeebHub Mobile Server"
                         className="flex-row items-center gap-4"
                     >
                         <Image
@@ -213,7 +213,7 @@ export default function HomeScreen() {
                             <View className="flex-1 gap-1">
                                 <Text className="text-base font-semibold text-foreground">First-time setup required</Text>
                                 <Text className="text-xs leading-5 text-muted-foreground">
-                                    Your local Seanime server is running but needs initial configuration.
+                                    Your local WeebHub server is running but needs initial configuration.
                                 </Text>
                             </View>
                         </View>
@@ -299,7 +299,7 @@ export default function HomeScreen() {
 
                         <View className="flex-1">
                             <Text className="text-base font-semibold text-foreground">
-                                {controller.reachability.hasUser ? (controller.reachability.viewerName ?? "Seanime User") : "Local Account"}
+                                {controller.reachability.hasUser ? (controller.reachability.viewerName ?? "WeebHub User") : "Local Account"}
                             </Text>
                             <Text className="text-xs text-muted-foreground mt-0.5">
                                 {controller.reachability.hasUser ? "Logged in to AniList" : "Not logged in to AniList"}

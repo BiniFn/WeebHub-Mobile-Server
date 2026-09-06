@@ -37,7 +37,7 @@ export function validateConfigToml(content: string): ConfigValidation {
     }
 
     if (port !== SERVER_PORT) {
-        return { valid: true, message: `Saved config uses port ${port}. The mobile wrapper still starts Seanime on ${SERVER_PORT}.` }
+        return { valid: true, message: `Saved config uses port ${port}. The mobile wrapper still starts WeebHub on ${SERVER_PORT}.` }
     }
 
     return { valid: true, message: null }

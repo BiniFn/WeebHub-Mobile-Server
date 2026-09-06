@@ -1,8 +1,8 @@
 Pod::Spec.new do |s|
   s.name           = 'ExpoSeanimeServer'
   s.version        = '0.1.0'
-  s.summary        = 'Expo module for hosting the Seanime Go server'
-  s.description    = 'Expo module that starts the Seanime Gomobile server framework and manages mobile keep-alive behavior'
+  s.summary        = 'Expo module for hosting the WeebHub Go server'
+  s.description    = 'Expo module that starts the WeebHub Gomobile server framework and manages mobile keep-alive behavior'
   s.author         = 'seanime'
   s.homepage       = 'https://github.com/5rahim/seanime'
   s.platforms      = { :ios => '15.1' }

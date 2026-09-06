@@ -261,7 +261,7 @@ export default function LanAccessScreen() {
                 <View className="flex-row items-start gap-3 rounded-xl bg-orange-500/[0.04] p-4">
                     <Text className="flex-1 text-xs leading-5 text-white/[0.8]">
                         Remote access requires a password and uses
-                        Seanime&apos;s default secure mode. Changes take effect
+                        WeebHub&apos;s default secure mode. Changes take effect
                         after the server restarts.
                     </Text>
                 </View>
