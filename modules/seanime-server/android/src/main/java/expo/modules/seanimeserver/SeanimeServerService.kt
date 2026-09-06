@@ -69,7 +69,7 @@ class SeanimeServerService : Service() {
             runCatching {
                 Seq.setContext(applicationContext)
                 val dataDir = SeanimeServerRuntime.dataDir(applicationContext)
-                Mobile.startServer(dataDir.absolutePath, File(dataDir, "cache").absolutePath, port.toLong())
+                Mobile.StartWeebHub(dataDir.absolutePath, port.toInt())
                 SeanimeServerRuntime.setRunning(applicationContext)
             }.onFailure { error ->
                 serverStarted.set(false)
