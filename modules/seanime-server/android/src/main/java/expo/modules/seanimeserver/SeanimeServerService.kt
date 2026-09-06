@@ -1,0 +1,100 @@
+package expo.modules.seanimeserver
+
+import android.app.Service
+import android.content.Intent
+import android.os.IBinder
+import android.os.PowerManager
+import go.Seq
+import mobile.Mobile
+import java.io.File
+import java.util.concurrent.atomic.AtomicBoolean
+
+class SeanimeServerService : Service() {
+    private var wakeLock: PowerManager.WakeLock? = null
+
+    override fun onBind(intent: Intent?): IBinder? {
+        return null
+    }
+
+    override fun onCreate() {
+        super.onCreate()
+        Seq.setContext(applicationContext)
+    }
+
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        if (intent?.action == SeanimeServerRuntime.actionStop) {
+            handleStop(intent.getBooleanExtra(SeanimeServerRuntime.extraTerminate, true))
+            return START_NOT_STICKY
+        }
+
+        val port = intent?.getIntExtra(SeanimeServerRuntime.extraPort, SeanimeServerRuntime.defaultPort)
+            ?: SeanimeServerRuntime.defaultPort
+
+        startForeground(
+            SeanimeServerRuntime.notificationId,
+            SeanimeServerRuntime.createNotification(applicationContext)
+        )
+        ensureWakeLock()
+        startGoServer(port)
+
+        return START_STICKY
+    }
+
+    override fun onDestroy() {
+        releaseWakeLock()
+        super.onDestroy()
+    }
+
+    private fun ensureWakeLock() {
+        if (wakeLock?.isHeld == true) return
+        wakeLock = SeanimeServerRuntime.acquireWakeLock(applicationContext)
+    }
+
+    private fun releaseWakeLock() {
+        runCatching {
+            if (wakeLock?.isHeld == true) {
+                wakeLock?.release()
+            }
+        }
+        wakeLock = null
+    }
+
+    private fun startGoServer(port: Int) {
+        if (!serverStarted.compareAndSet(false, true)) {
+            SeanimeServerRuntime.setRunning(applicationContext)
+            return
+        }
+
+        Thread {
+            runCatching {
+                Seq.setContext(applicationContext)
+                val dataDir = SeanimeServerRuntime.dataDir(applicationContext)
+                Mobile.startServer(dataDir.absolutePath, File(dataDir, "cache").absolutePath, port.toLong())
+                SeanimeServerRuntime.setRunning(applicationContext)
+            }.onFailure { error ->
+                serverStarted.set(false)
+                SeanimeServerRuntime.setError(applicationContext, error)
+            }
+        }.apply {
+            name = "SeanimeGoServer"
+            isDaemon = false
+            start()
+        }
+    }
+
+    private fun handleStop(terminate: Boolean) {
+        releaseWakeLock()
+        stopForeground(STOP_FOREGROUND_REMOVE)
+        stopSelf()
+        SeanimeServerRuntime.setStopped(applicationContext)
+        if (terminate) {
+            android.os.Handler(mainLooper).postDelayed({
+                android.os.Process.killProcess(android.os.Process.myPid())
+            }, 1000)
+        }
+    }
+
+    companion object {
+        private val serverStarted = AtomicBoolean(false)
+    }
+}
