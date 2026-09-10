@@ -38,7 +38,6 @@
     "crypto-js": "^4.2.0",
     "expo": "~55.0.31",
     "expo-constants": "~55.0.16",
-    "expo-dev-client": "~55.0.40",
     "expo-haptics": "~55.0.18",
     "expo-linking": "~55.0.17",
     "expo-network": "~55.0.16",

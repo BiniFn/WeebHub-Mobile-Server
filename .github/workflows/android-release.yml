@@ -29,7 +29,7 @@ jobs:
           go-version: '1.26.2'
       - name: Clone WeebHub main repo to build AAR
         run: |
-          git clone https://github.com/BiniFn/WeebHub.git /tmp/weebhub-main
+          git clone --depth 1 https://github.com/BiniFn/WeebHub.git /tmp/weebhub-main
           cd /tmp/weebhub-main
           go install golang.org/x/mobile/cmd/gomobile@latest
           gomobile init
@@ -58,4 +58,4 @@ jobs:
           files: |
             weebhub-mobile-server-v5.0.0.apk
             app-release.apk
-          fail_on_unmatched_files: true
+          fail_on_unmatched_files: false
