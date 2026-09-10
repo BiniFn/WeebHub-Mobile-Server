@@ -26,7 +26,7 @@ WeebHub Mobile Server does not provide, host, or distribute media. You are respo
 
 ## Features
 
-- Local WeebHub server on Android and iOS
+- Local WeebHub server on Android (iOS build coming soon)
 - Android foreground-service, wake-lock, notification, boot, and storage controls
 - iOS background/keep-alive integration where supported
 - Local Tenji connectivity through `http://127.0.0.1:43211`
