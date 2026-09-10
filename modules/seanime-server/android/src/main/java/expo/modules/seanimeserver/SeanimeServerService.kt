@@ -73,7 +73,7 @@ class SeanimeServerService : Service() {
                 try {
                     Mobile.startServer(dataDir.absolutePath, cacheDir.absolutePath, port.toLong())
                 } catch (e: NoSuchMethodError) {
-                    Mobile.startWeebHub(dataDir.absolutePath, cacheDir.absolutePath, port.toLong())
+                    Mobile.startWeebHub(dataDir.absolutePath, port.toLong())
                 }
                 SeanimeServerRuntime.setRunning(applicationContext)
             }.onFailure { error ->
