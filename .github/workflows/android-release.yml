@@ -43,11 +43,19 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Prebuild Android
-        run: npx expo prebuild --platform android --clean
-      - name: Build APK
-        run: cd android && ./gradlew assembleDebug
+        run: |
+          npx expo prebuild --platform android --clean
+          mkdir -p android/app/libs
+          cp /tmp/seanime.aar android/app/libs/seanime.aar
+      - name: Build Release APK
+        run: |
+          cd android && ./gradlew assembleRelease
+          cp app/build/outputs/apk/release/app-release.apk ../weebhub-mobile-server-v5.0.0.apk
+          cp app/build/outputs/apk/release/app-release.apk ../app-release.apk
       - name: Upload APK to release
         uses: softprops/action-gh-release@v2
         with:
-          files: android/app/build/outputs/apk/debug/app-debug.apk
+          files: |
+            weebhub-mobile-server-v5.0.0.apk
+            app-release.apk
           fail_on_unmatched_files: true
